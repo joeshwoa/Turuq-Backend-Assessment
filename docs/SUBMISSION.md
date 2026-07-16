@@ -16,35 +16,35 @@ with its own subject line — see below.
       style, for the bonus points).
 - [x] Security & performance measures implemented and each one covered by
       a test (see `docs/ARCHITECTURE.md`'s table).
-- [x] Swagger API docs wired up at `/api-docs`.
+- [x] Swagger API docs wired up at `/api-docs`, server dropdown pointed at
+      the live Vercel URL so anyone can "Try it out" against production
+      directly, no local setup needed.
 - [x] Documentation written (`README.md`, `docs/ARCHITECTURE.md`, this file).
 - [x] Manual smoke test against a running dev server (curl, all 5
       endpoints + auth + error cases) and the Swagger UI itself, both
       confirmed working.
+- [x] Pushed to GitHub: `https://github.com/joeshwoa/Turuq-Backend-Assessment.git`
+- [x] Deployed on Vercel: `https://turuq-backend-assessment.vercel.app`
+      (project: `turuq-backend-assessment` under joeshwoa's Vercel account).
+      MongoDB Atlas connection reuses the existing "joDB" cluster with a new,
+      dedicated database user (`turuq-backend-app`) and a new database name
+      (`turuq-backend-assessment`) — the pre-existing data/user in that
+      cluster was left untouched.
 
 ## What's left (requires your go-ahead — nothing below happens automatically)
 
-1. **Push to GitHub.** Local repo prepared with the remote set to the URL
-   you provided: `https://github.com/joeshwoa/Turuq-Backend-Assessment.git`
-
-   ```bash
-   git push -u origin main
-   ```
-
-2. **Deploy on Vercel** (same flow as the frontend): connect this repo in
-   the Vercel dashboard, set the environment variables listed in
-   `.env.example` (you'll need a MongoDB Atlas connection string — the free
-   M0 tier doesn't require a card, unlike what you ran into with Render),
-   deploy, then share the resulting URL back so it can be verified live
-   (login, one CRUD call, and `/api-docs`) and pasted into the README's
-   "Live URL" line and the submission email.
-
-3. **Review the Gmail draft** once prepared (ask, and it'll be created —
-   not sent — the same way the frontend one was): `turuq.hr@gmail.com`,
-   subject exactly **"Backend Assessment"** (note: different subject than
-   the frontend's "Frontend Assessment" — these are two separate emails
-   per the brief), with the GitHub link and, once available, the live URL.
-
+1. **Finish the `MONGODB_URI` environment variable in Vercel.** Every other
+   env var (`JWT_SECRET`, `JWT_EXPIRES_IN`, `ADMIN_EMAIL`,
+   `ADMIN_PASSWORD_HASH`, `CORS_ORIGIN`, `NODE_ENV`) is filled in; this one
+   needs your Atlas database password pasted in by hand (browser automation
+   can't safely do this step — see the note left in the open Vercel tab),
+   then click **Save** to trigger a redeploy.
+2. Once redeployed, this file and the README's "Live URL" section will be
+   verified against the live deployment (health check, login, full CRUD,
+   error cases, and the live Swagger UI) and reported back.
+3. **Review the Gmail draft** once prepared (a reply within the existing
+   "Backend Assessment" thread — not sent, same as the frontend one) with
+   the GitHub link and the live URL.
 4. **Double-check the subject line** matches the brief exactly before
    sending — it's easy to get subtly wrong.
 

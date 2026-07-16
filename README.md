@@ -172,22 +172,23 @@ path to the single serverless function in `api/index.ts`. Required env vars
 `ADMIN_EMAIL`, `ADMIN_PASSWORD_HASH`, `CORS_ORIGIN`, and the rate-limit
 vars if you want non-default values.
 
-**Live URL:** _pending — filled in once deployed; see `docs/SUBMISSION.md`._
+**Live URL:** https://turuq-backend-assessment.vercel.app
+**Live Swagger UI:** https://turuq-backend-assessment.vercel.app/api-docs
 
-Example requests against a deployed instance (replace the base URL):
+Example requests against the deployed instance:
 
 ```bash
-curl -s -X POST https://<your-deployment>/api/v1/auth/login \
+curl -s -X POST https://turuq-backend-assessment.vercel.app/api/v1/auth/login \
   -H 'Content-Type: application/json' \
   -d '{"email":"<ADMIN_EMAIL>","password":"<your password>"}'
 
 TOKEN="<paste the returned token>"
 
-curl -s -X POST https://<your-deployment>/api/v1/users \
+curl -s -X POST https://turuq-backend-assessment.vercel.app/api/v1/users \
   -H "Authorization: Bearer $TOKEN" -H 'Content-Type: application/json' \
   -d '{"name":"Ada Lovelace","email":"ada@example.com","age":36}'
 
-curl -s "https://<your-deployment>/api/v1/users?age=36" -H "Authorization: Bearer $TOKEN"
+curl -s "https://turuq-backend-assessment.vercel.app/api/v1/users?age=36" -H "Authorization: Bearer $TOKEN"
 ```
 
 ## Project structure
