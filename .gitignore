@@ -12,3 +12,4 @@ npm-debug.log*
 
 # mongodb-memory-server caches its downloaded mongod binary here on some platforms
 .cache/
+ADMIN_CREDENTIAL.local.txt
