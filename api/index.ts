@@ -33,7 +33,12 @@ let connectionPromise: Promise<typeof mongoose> | null = null;
 function getConnection(): Promise<typeof mongoose> {
   if (!connectionPromise) {
     connectionPromise = mongoose
-      .connect(env.MONGODB_URI, { maxPoolSize: env.MONGODB_MAX_POOL_SIZE })
+      .connect(env.MONGODB_URI, {
+        maxPoolSize: env.MONGODB_MAX_POOL_SIZE,
+        ...(env.MONGODB_USER && env.MONGODB_PASSWORD
+          ? { auth: { username: env.MONGODB_USER, password: env.MONGODB_PASSWORD } }
+          : {}),
+      })
       .catch((err) => {
         // Let the next invocation try again instead of caching a permanent failure.
         connectionPromise = null;

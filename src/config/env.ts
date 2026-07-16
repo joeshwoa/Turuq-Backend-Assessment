@@ -22,6 +22,15 @@ const envSchema = z.object({
 
   MONGODB_URI: z.string().min(1, "MONGODB_URI is required"),
   MONGODB_MAX_POOL_SIZE: z.coerce.number().int().positive().default(10),
+  // Optional: supply credentials out-of-band instead of embedding them in
+  // MONGODB_URI. This exists because a username/password embedded directly
+  // in a connection string must be percent-encoded if it contains
+  // characters like `:`, `/`, `@`, or `%` — an easy mistake to make when
+  // pasting an auto-generated database password by hand. Passing both here
+  // instead hands the raw string straight to the driver's `auth` option,
+  // with no URI parsing involved, so no encoding is needed.
+  MONGODB_USER: z.string().optional(),
+  MONGODB_PASSWORD: z.string().optional(),
 
   JWT_SECRET: z.string().min(32, "JWT_SECRET must be at least 32 characters"),
   JWT_EXPIRES_IN: z.string().default("1h"),

@@ -16,6 +16,9 @@ export async function connectDB(): Promise<void> {
 
   await mongoose.connect(env.MONGODB_URI, {
     maxPoolSize: env.MONGODB_MAX_POOL_SIZE,
+    ...(env.MONGODB_USER && env.MONGODB_PASSWORD
+      ? { auth: { username: env.MONGODB_USER, password: env.MONGODB_PASSWORD } }
+      : {}),
   });
 }
 
