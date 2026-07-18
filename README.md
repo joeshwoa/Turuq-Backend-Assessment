@@ -130,9 +130,9 @@ Every error response shares one shape:
   `docs/ARCHITECTURE.md`.
 
 **Bonus points**
-- ✅ Deployed (Vercel) — see "Deployment" below for the live URL once
-  Joshua deploys it, and example requests.
-- ✅ API documentation — Swagger UI at `/api-docs`.
+- ✅ Deployed (Vercel) — live and verified, see "Deployment" below for the
+  URL and example requests.
+- ✅ API documentation — Swagger UI at `/api-docs`, confirmed working live.
 - ✅ Unit + integration tests — 55 tests, `npm test`.
 
 **Task 2** — ✅ detailed pseudocode (the brief's bonus-earning style) at
